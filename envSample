@@ -1,0 +1,9 @@
+FLASK_DEBUG=development
+FLASK_RUN_PORT=4000
+FLASK_RUN_HOST="localhost"
+SECRET_KEY=d74f8fa25cf08450c6fa37f2fbc4e2618c0c1a7daf3730229c18e6da895021ca
+ 
+
+
+ 
+ 
