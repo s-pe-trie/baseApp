@@ -4,7 +4,7 @@ Jinja2 Documentation:    http://jinja.pocoo.org/2/documentation/
 Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
  """
-from app import app 
+from app import app, Config
 from flask import render_template, request, redirect, url_for, flash,  session,  send_from_directory,  abort 
 from werkzeug.utils import secure_filename 
 from werkzeug.security import check_password_hash
