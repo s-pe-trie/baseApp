@@ -25,12 +25,6 @@ def home():
 
 # Add other routes below
  
-@app.route('/about')
-def about():
-    """Render website's About page."""
-    return render_template('about.html', name="My Home automation system")
-
-
  
 
 ###
