@@ -9,6 +9,7 @@ Thumbs.db
 .venv/
 venv/
 aws_env/
+env/
 
 # PyCharm
 .idea

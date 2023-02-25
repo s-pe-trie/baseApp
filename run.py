@@ -1,7 +1,7 @@
 #! /usr/bin/env python
-from app import app, Config, Mqtt
-#from .config import Config
-print(Config.FLASK_RUN_PORT)
+from app import app, Config 
+
+ 
 
 # Initialize  MQTT client below
 
