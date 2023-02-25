@@ -9,6 +9,9 @@ from flask import render_template, request, redirect, url_for, flash,  session, 
 from werkzeug.utils import secure_filename 
 from werkzeug.security import check_password_hash
  
+ 
+# Add instance of Database class below
+
 
 ###
 # Routing for your application.

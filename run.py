@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 from app import app, Config 
 
- 
+
 
 # Initialize  MQTT client below
 
