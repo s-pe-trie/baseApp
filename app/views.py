@@ -18,8 +18,8 @@ from werkzeug.security import check_password_hash
 ###
 @app.route('/about')
 def about():
-"""Render website's About page."""
-return render_template('about.html', name="my Home Automation System")
+    """Render website's About page."""
+    return render_template('about.html', name="my Home Automation System")
 
  
 
