@@ -14,12 +14,18 @@ from werkzeug.security import check_password_hash
 from os import getcwd
 from os.path import join
 
+# from app import app, Config, Mqtt, DB
 # Add instance of Database class below
 
 
 ###
 # Routing for your application.
 ###
+@app.route('/calc')
+def calc():
+    """Render website's calc page."""
+    return render_template('calc.html', name="my Calc System")
+
 @app.route('/about')
 def about():
     """Render website's About page."""
@@ -83,6 +89,17 @@ def sumTwoNumbers(firstnumber, secondnumber):
         return f"The sum of {firstnumber} and {secondnumber} is {summedNumbers}"   
     return render_template('404.html'), 404
 
+@app.route('/sum', methods=["GET"])
+def sum2Numbers():
+    """Return the Sum of two numbers"""
+    if request.method == "GET":
+        # Process GET requests
+        num1 = request.args.get("number1")
+        num2 = request.args.get("number2")
+        summedNumbers = int(num1) + int(num2)
+        return f"Answer: The sum of {num1} and {num2} is {summedNumbers}"
+    return render_template('404.html'), 40
+
 @app.route('/mul', methods=["POST"])
 def mul2Numbers():
     """Return the Product of two numbers"""
@@ -92,8 +109,22 @@ def mul2Numbers():
         num1 = data["number1"]
         num2 = data["number2"]
         mulNumbers = int(num1) * int(num2)
-        return f"The product of {num1} and {num2} is {mulNumbers}"
+        return f"Answer: The product of {num1} and {num2} is {mulNumbers}"
     return render_template('404.html'), 404
+
+@app.route('/tempC', methods=["POST"])
+def temp2Numb():
+    """Return the Temperature Conversion of a number"""
+    if request.method == "POST":
+        # Process GET requests 
+        data = request.get_json()
+        numb1 = data["number1"]
+        # num2 = data["number2"]
+        faren = (int(numb1) * 1.8)+32
+        return f"Answer: {numb1}°C is {faren}°F"
+    return render_template('404.html'), 404
+
+
 ###
 # The functions below should be applicable to all Flask apps.
 ###

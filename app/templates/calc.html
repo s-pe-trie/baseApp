@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block css_js %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/calc.css') }}">
+<script src="{{url_for('static',filename='js/calc.js')}}"></script>
+
+{% endblock %}
+{% block main %}
+<div class="calcblks">
+<!-- <h1>Calc</h1> -->
+<!-- <img id="aboutimage" src="{{url_for('static',filename='images/undraw_experience_design_re_dmqq.svg')}}" alt=""> -->
+<!-- <p>This webpage is about {{ name }}.</p> -->
+<ul class="panels">
+    
+    <li class="panels_item add">
+        <h5>Sum of two integers</h5>
+       
+           <input type="number" id="num1" name="num1" >
+            <span>+</span>
+            <input type="number" id="num2" name="num2" > 
+        <p class="Addint">Answer:</p>
+        <button  type="button" class="Subbutton">Submit</button>
+    </li>
+
+    <li class="panels_item mul">
+       
+        <h5>Product of two integers</h5>
+      
+           <input type="number" id="n1" name="n1" required>
+            <span>x</span>
+            <input type="number" id="n2" name="n2" required> 
+        <p class="Mulint">Answer:</p>
+        <button type="button" class="Mulbutton">Submit</button>
+    </li>
+
+    <li class="panels_item TIC">
+       
+        
+        <h5>Temperature Conversion</h5>  
+           <input type="number" id="T1" name="T1" required>
+            
+        <p class="TICint">Answer:</p>
+        <button type="button" class="Tbutton">Submit</button>
+    </li>
+
+
+
+</ul>
+</div>
+{% endblock %}
