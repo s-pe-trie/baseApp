@@ -14,7 +14,7 @@ from werkzeug.security import check_password_hash
 from os import getcwd
 from os.path import join
 
-# from app import app, Config, Mqtt, DB
+from app import app, Config, Mqtt, DB
 # Add instance of Database class below
 
 
