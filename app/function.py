@@ -138,6 +138,7 @@ class DB:
         self.DESCENDING                 	= 1
         self.ASCENDING                  	= -1  
 
+  
 
     def testConnection(self):
         # TEST CONNECTION TO MONGODB DATABASE
@@ -180,8 +181,21 @@ class DB:
         else:                  
             return True 
 
- 
-       
+
+    def plotStaticGraph(self,variable,start,end):
+            # RETRIEVE ALL THE DATA FOR A SPECIFIC VARIABLE BETWEEN START AND END TIMESTAMPS
+            try:
+                remotedb = self.remoteMongo('mongodb://%s:%s@%s:%s' % (self.username, self.password,self.server,self.port))
+                result = list(remotedb["ELET2415"]["data"].aggregate([ { '$match': { 'TIMESTAMP': { '$gte': start, 
+            '$lte': end } } }, { '$group': { '_id': None, 'data': { '$push': { 'timestamp': '$TIMESTAMP', 'outtemp': f'${variable}' } 
+            } } }, { '$project': { '_id': 0 } } ]))
+                data = [[x['timestamp'],x['outtemp']] for x in result[0]["data"]]
+                # print(data)
+            except Exception as e:
+                print(str(e))
+                return []
+            else: 
+                return data       
 
 
 
@@ -194,13 +208,14 @@ def main():
     # pubsub = Mqtt("/sensor/data","www.yanacreations.com",1883)
     one = DB(Config)
     one.plotStaticGraph("TEMPERATURE",1675365754,1675368174)
-    # timestamp = floor(time())
-    # registered = ctime(timestamp)
+    timestamp = floor(time())
+    registered = ctime(timestamp)
     # print(f"DB Connected : {one.testConnection()}")
   
      
     # print("completed")
-   
+
+
      
 
 

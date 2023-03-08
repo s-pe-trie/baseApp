@@ -5,7 +5,7 @@ Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
  """
 from app import app, Config
-from flask import render_template, request, redirect, url_for, flash,  session,  send_from_directory,  abort 
+# from flask import render_template, request, redirect, url_for, flash,  session,  send_from_directory,  abort 
 
 from flask import render_template, request, redirect, url_for, flash, session, send_from_directory, abort , jsonify
 from werkzeug.utils import secure_filename 
@@ -15,12 +15,23 @@ from os import getcwd
 from os.path import join
 
 from app import app, Config, Mqtt, DB
+from .function import DB, Mqtt
 # Add instance of Database class below
+
+#Create instance of Database class
+mongo = DB(Config)
 
 
 ###
 # Routing for your application.
 ###
+
+
+@app.route('/dashboard')
+def dashboard():
+    """Render website's dashboard."""
+    return render_template('dashboard.html', name="my Dashboard")
+
 @app.route('/calc')
 def calc():
     """Render website's calc page."""
@@ -41,6 +52,20 @@ def home():
 
 
 # Add other routes below
+
+@app.route('/data', methods=["GET"])
+def data():
+    """ Return data """
+    if request.method == "GET":
+        # Process GET requests
+        VARIABLE = request.args.get("variable")
+        START = int(request.args.get("start"))
+        END = int(request.args.get("end"))
+        data = mongo.plotStaticGraph(VARIABLE,START, END)
+
+        return jsonify(data) 
+    return render_template('404.html'), 404
+
  
 @app.route('/text', methods=["GET","POST"])
 def text():

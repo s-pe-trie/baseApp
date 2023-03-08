@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block css_js %}
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet"> -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<script src="{{url_for('static',filename='js/mqttws31.js')}}"></script>
+<script src="{{url_for('static',filename='js/dashboard.js')}}"></script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+{% endblock %}
+
+{% block main %}
+
+<figure class="highcharts-figure">
+    <div id="livedata"></div>
+</figure>
+
+<div class="header">
+    <h1>EGGIE Home Automation Dashboard</h1>
+    
+</div>
+
+<div class="date"><span>Start</span> <input id="start" type="date" placeholder="Start"> <span>End</span> <input id="end"
+    type="date" placeholder="End"> <button class="plot">Plot</button></div>
+    <figure class="highcharts-figure">
+    <div id="container"></div>
+    </figure>
+    
+<hr>
+<div id="messages"></div>
+<div id="status"></div>
+<hr>
+
+<ul class="dashboard" >
+    <!-- <img id="dashboardimage" src="{{url_for('static',filename='images/Nlights.jpg')}}" alt="Northernlights"> -->
+    <li class="dashboard_item kitchen">
+        <h4>Kitchen</h4>
+       
+        <!-- <header> -->
+            <img id = "KBulb" src="{{url_for('static', filename='images/offlights.svg') }}" alt="OFF">
+            <img id = "KONBulb" src="{{url_for('static', filename='images/ONbulb.svg') }}" alt="ON">
+        <!-- </header> -->
+        <p> OFF</p>
+        <button type="button" class="button">Toggle</button>
+    </li>
+
+    
+    <li class="dashboard_item livingroom">
+        <h4>Living Room</h4>
+       
+        <img id = "LBulb" src="{{url_for('static', filename='images/offlights.svg') }}" alt="OFF">
+        <img id = "LONBulb" src="{{url_for('static', filename='images/ONbulb.svg') }}" alt="ON">
+        <p>OFF</p>
+        <button type="button" class="button">Toggle</button>
+    </li>
+
+    <li class="dashboard_item bedroom">
+        <h4>Bed Room</h4>
+        
+        <img id = "BeBulb" src="{{url_for('static', filename='images/offlights.svg') }}" alt="OFF">
+        <img id = "BeONBulb" src="{{url_for('static', filename='images/ONbulb.svg') }}" alt="ON">
+        <p>OFF</p>
+        <button type="button" class="button">Toggle</button>
+    </li>
+
+    <li class="dashboard_item bathroom">
+        <h4>Bath Room</h4>
+       
+        <img id = "BaBulb" src="{{url_for('static', filename='images/offlights.svg') }}" alt="OFF">
+        <img id = "BaONBulb" src="{{url_for('static', filename='images/ONbulb.svg') }}" alt="ON">
+        <p>OFF</p>
+        <button type="button" class="button">Toggle</button>
+    </li>
+
+    <li class="dashboard_item studyroom">
+        <h4>Study Room</h4>
+        
+        <img id = "SBulb" src="{{url_for('static', filename='images/offlights.svg') }}" alt="OFF">
+        <img id = "SONBulb" src="{{url_for('static', filename='images/ONbulb.svg') }}" alt="ON">
+        
+        <p>OFF</p>
+        <button type="button" class="button">Toggle</button>
+    </li>
+
+    <li class="dashboard_item hall">
+        <h4>Hall</h4>
+       
+        <img id = "HBulb" src="{{url_for('static', filename='images/offlights.svg') }}" alt="OFF">
+        <img id = "HONBulb" src="{{url_for('static', filename='images/ONbulb.svg') }}" alt="ON">
+        <p>OFF</p>
+        <button type="button" class="button">Toggle</button>
+    </li>
+
+    <li class="dashboard_item frontdoor">
+        <h4>Front Door</h4>
+       <!-- <a href="C:\Users\stenc\OneDrive\Documents\website\door-close-svgrepo-com.svg">CLOSED</a> -->
+       <!-- <header> -->
+            <img id = "FDC" src="{{url_for('static', filename='images/door-close-svgrepo-com.svg') }}" alt="CLOSED">
+            <img id ="FDO" src="{{url_for('static', filename='images/door-open-svgrepo-com.svg') }}" alt="OPEN">
+
+       <!-- </header> -->
+        <p>CLOSED</p>
+    </li>
+    <!-- Create remaining li elements here -->
+    <li class="dashboard_item balconydoor">
+        <h4>BalconyDoor</h4>
+        <!-- <header> -->
+            <img id = "BDC" src="{{url_for('static', filename='images/door-close-svgrepo-com.svg') }}" alt="CLOSED">
+            <img id = "BDO" src="{{url_for('static', filename='images/door-open-svgrepo-com.svg') }}" alt="OPEN">
+
+       <!-- </header> -->
+        <p>OPEN</p>
+    </li>
+
+</ul>
+
+{% endblock %}

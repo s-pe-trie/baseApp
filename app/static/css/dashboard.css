@@ -1,0 +1,81 @@
+body {
+    /* background: #bb7733; */
+    
+    background-image: url("../images/orchids.jpg");
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    }
+    .header{
+    background-color: rgb(76, 192, 177);
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    .dashboard{
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    }
+    .dashboard_item{
+    width: 150px;
+    height: 170px;
+    background: rgb(53, 53, 150);
+    color: rgb(246, 248, 95);
+    /* font-size: 15px; */
+    padding: 16px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center ;
+    gap: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    }
+
+    .button{
+        background-color: #183a19; /* Green */
+        border: none;
+        color: rgb(252, 255, 65);
+        padding: 8px 5px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+    }
+    .dashboard_item > h4{
+    margin: 0;
+    border-bottom: 1px solid black;
+    width: 100%;
+    font-size: 15px;
+    }
+
+   
+    .dashboard_item > p{
+    font-size: 16px;
+    margin: 0;
+    color: lightseagreen;
+    font-weight: bold;
+    }
+    .mqttConnected {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(25, 226, 18);
+    border: 1px solid cornsilk;
+    padding: 1px;
+    }
+    .mqttdisconnected {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(99, 13, 13);
+    border: 1px solid cornsilk;
+    padding: 1px;
+    }
+    
